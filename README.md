@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- belongs_to :purchase_history
+- has_many :purchase_histories
 
 
 ## items テーブル
@@ -58,14 +58,14 @@
 - belongs_to :item
 - belongs_to :user
 
-## address テーブル
+## addresses テーブル
 
 | Column           | Type       | Options             |
 | ---------------- | ---------- | ------------------- |
 | phone_num        | string     | null: false         |
 | prefecture_id    | integer    | null: false         |
 | city             | string     | null: false         |
-| home_number      | string     |                     |
+| home_number      | string     | null: false         |
 | building_name    | string     |                     |
 | telephone        | string     | null: false         |
 | purchase_history | references | foreign_key:true    |
