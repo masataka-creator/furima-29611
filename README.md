@@ -6,7 +6,6 @@
 | ------------------ | ------- | ----------------------- |
 | nickname           | string  | null: false             |
 | email              | string  | null: false,unique:true |
-| password           | string  | null: false             |
 | encrypted_password | string  | null: false             |
 | first_name         | string  | null: false             |
 | last_name          | string  | null: false             |
@@ -42,6 +41,7 @@
 - belongs_to_active_hash :delivery_area
 - belongs_to_active_hash :delivery_days
 - belongs_to :user
+- has_one :purchase_history
 
 
 ## purchase_histories テーブル
@@ -73,5 +73,4 @@
 ### Association
 
 - belongs_to_active_hash:prefecture
-- belongs_to :user
 - belongs_to :purchase_history
