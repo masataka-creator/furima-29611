@@ -16,36 +16,23 @@
 
 ### Association
 
-- has_one :credit_card, dependent: :destroy
-- has_one :address, dependent: :destroy
 - has_many :items
-
-
-## cardsテーブル
-
-| Column          | Type       | Options                      |
-| --------------- | ---------- | ---------------------------- |
-| payjp_id        | string     | null: false,unique:true      |
-| customer_id     | string     | null: false                  |
-| user            | references | null: false,foreign_key:true | 
-
-### Association
-
-- belongs_to :user
+- belongs_to :purchase_history
 
 
 ## items テーブル
 
-| Column             | Type      | Options                      |
-| ------------------ | --------- | ---------------------------- |
-| name               | string    | null: false                  |
-| description        | text      | null: false                  | 
-| category_id        | integer   | null: false                  |
-| condition_id       | integer   | null: false                  |
-| delivery_charge_id | integer   | null: false                  |
-| delivery_area_id   | integer   | null: false                  |
-| delivery_days_id   | integer   | null: false                  |
-| price              | integer   | null: false                  |
+| Column             | Type       | Options                      |
+| ------------------ | ---------- | ---------------------------- |
+| name               | string     | null: false                  |
+| description        | text       | null: false                  | 
+| category_id        | integer    | null: false                  |
+| condition_id       | integer    | null: false                  |
+| delivery_charge_id | integer    | null: false                  |
+| delivery_area_id   | integer    | null: false                  |
+| delivery_days_id   | integer    | null: false                  |
+| price              | integer    | null: false                  |
+| user               | references | foreign_key:true             |
 
 ### Association
 
@@ -59,10 +46,10 @@
 
 ## purchase_histories テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| user       | string     | null: false,foreign_key: true  |
-| item       | references | foreign_key:true               |
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| user       | references | foreign_key: true |
+| item       | references | foreign_key:true  |
 
 
 ### Association
@@ -73,17 +60,18 @@
 
 ## address テーブル
 
-| Column        | Type       | Options     |
-| ------------- | ---------- | ----------- |
-| phone_num     | string     | null: false |
-| prefecture_id | integer    | null: false |
-| city          | string     | null: false |
-| home_number   | string     |             |
-| building_name | string     |             |
-| telephone     | string     |             |
+| Column           | Type       | Options             |
+| ---------------- | ---------- | ------------------- |
+| phone_num        | string     | null: false         |
+| prefecture_id    | integer    | null: false         |
+| city             | string     | null: false         |
+| home_number      | string     |                     |
+| building_name    | string     |                     |
+| telephone        | string     | null: false         |
+| purchase_history | references | foreign_key:true    |
 
 ### Association
 
 - belongs_to_active_hash:prefecture
 - belongs_to :user
-- belongs_to :purchase_histories
+- belongs_to :purchase_history
