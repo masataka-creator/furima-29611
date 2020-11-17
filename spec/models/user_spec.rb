@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'パスワードと確認パスワードが一致していないと登録できない' do
-      @user.password = 'aaaaaa' # password_confirmationの値をpasswordの値と違う値にする
+      @user.password_confirmation = 'aaa111' # password_confirmationの値をpasswordの値と違う値にする
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
@@ -34,6 +34,12 @@ RSpec.describe User, type: :model do
       @user.password = 'aaaaaa' # passwordの値を半角英字で統一してみる
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
+    end
+
+    it 'パスワードが6文字未満だと登録できない' do
+      @user.password = 'a1234' # passwordの値を6文字未満にする
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
     it '性が空だと登録できない' do
@@ -58,12 +64,6 @@ RSpec.describe User, type: :model do
       @user.last_name_kana = '' # last_name_kanaの値を空にする
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name kana can't be blank")
-    end
-
-    it 'パスワードが6文字未満だと登録できない' do
-      @user.password = 'a1234' # passwordの値を6文字未満にする
-      @user.valid?
-      expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
 
     it '生年月日が空だと登録できない' do
