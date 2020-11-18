@@ -1,9 +1,10 @@
 class Item < ApplicationRecord
-  has_one_attached :image
+  has_one_attached :item_images
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
          with_options presence: true do
+          validates :item_images
           validates :name
           validates :description
           validates :category_id

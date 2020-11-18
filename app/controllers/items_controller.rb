@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:edit, :update]
 
   def index  # indexアクションを定義した
     @item = Item.all
@@ -18,8 +19,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @items.update(item_params)
+    redirect_to root_path
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def item_params
-    params.require(:message).permit(:content, :image)
+    params.require(:item).permit(:item_images, :name, :description, :category_id, :condition_id, :delivery_charge_id, :delivery_area_id, :delivery_days_id, :price, :user)
   end
 
   def move_to_index
