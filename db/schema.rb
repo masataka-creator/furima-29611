@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_041215) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.integer "category_id"
+    t.integer "category_id", null: false
     t.integer "condition_id", null: false
     t.integer "delivery_charge_id", null: false
     t.integer "delivery_area_id", null: false

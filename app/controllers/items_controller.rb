@@ -2,11 +2,12 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_message, only: [:edit, :update]
 
-  def index  # indexアクションを定義した
+  def index
     @item = Item.all
+    @items = Item.order("created_at DESC")
   end
 
-  def def new
+  def new
     @item = Item.new
   end
 
@@ -19,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @mitem = Item.new(item_params)
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
