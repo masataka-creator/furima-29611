@@ -27,11 +27,23 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @items.update(item_params)
+    redirect_to root_path
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def item_params
     params.require(:item).permit(:item_images, :name, :description, :category_id, :condition_id, :delivery_charge_id, :delivery_area_id, :delivery_days_id, :price, :user)
   end
 
-  def set_message
+  def set_item
     @item = Item.find(params[:id])
   end
 
