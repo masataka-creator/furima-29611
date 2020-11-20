@@ -1,5 +1,5 @@
 class CreateArticles < ActiveRecord::Migration[6.0]
-  def change
+  def create
     create_table :articles do |t|
       t.integer   :category_id ,null: false
       t.integer   :condition_id ,null: false
