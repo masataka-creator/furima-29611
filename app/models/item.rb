@@ -19,7 +19,7 @@ class Item < ApplicationRecord
     validates :delivery_area_id
     validates :delivery_days_id
     validates :price
-    validates :user_id
+    
   end
 
   with_options numericality: { other_than: 1 } do
