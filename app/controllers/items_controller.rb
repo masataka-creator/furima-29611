@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    @item = Item.all
+    @items = Item.all
     @items = Item.order("created_at DESC")
   end
 
@@ -13,12 +13,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return
   end
 
   def update
-    @item.update(item_params)
-    redirect_to root_path
+    if current_item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def create
@@ -33,6 +35,8 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
+
+  private
 
   def item_params
     params.require(:item).permit(:item_images, :name, :description, :category_id, :condition_id, :delivery_charge_id, :delivery_area_id, :delivery_days_id, :price, :user)
