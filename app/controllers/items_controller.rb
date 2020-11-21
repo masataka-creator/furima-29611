@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_message, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:index]
 
   def index
     @item = Item.all
@@ -12,6 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    return
   end
 
   def update
