@@ -1,4 +1,5 @@
 class Category < ActiveHash::Base
+  # class名とファイル名は一緒が望ましい
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: 'レディース' },
@@ -13,6 +14,4 @@ class Category < ActiveHash::Base
     { id: 11, name: 'その他' }
   ]
 
-
-  
 end
