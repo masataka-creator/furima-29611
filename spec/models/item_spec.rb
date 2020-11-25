@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
 describe '商品登録機能' do
 
   it '全ての情報がが存在すれば登録できること' do
-    expect(@user).to be_valid
+    expect(@item).to be_valid
   end
 
   it '画像が空では保存できないこと' do
