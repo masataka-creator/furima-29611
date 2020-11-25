@@ -9,7 +9,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     
     <%= form_with model:@item, url:items_path, local: true do |f| %>
-    <%# "@item, url:items_path,"追加しました %>
+    <%# "model:@item, url:items_path,"追加しました %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%= render 'devise/shared/error_messages', model: f.object %>
@@ -25,7 +25,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :item_images, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
     <%# /出品画像 %>

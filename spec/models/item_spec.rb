@@ -7,11 +7,16 @@ RSpec.describe Item, type: :model do
 
 describe '商品登録機能' do
 
+  it '画像が空では保存できないこと' do
+      @item.image = nil # imageを存在しないことにする
+      @item.valid?
+    expect(@item.errors.full_messages).to include("Image can't be blank")
+  end
+
   it '商品名が空だと登録できない' do
     @item.name = '' # nameの値を空にする
     @item.valid?
     expect(@item.errors.full_messages).to include("Name can't be blank")
-
   end
 
   it '商品名が41文字以上だと登録できない' do

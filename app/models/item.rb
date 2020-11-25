@@ -5,10 +5,11 @@ class Item < ApplicationRecord
   belongs_to       :delivery_charge
   belongs_to       :delivery_area
   belongs_to       :delivery_day
-  has_one_attached :item_images
+  belongs_to :user
+  has_one_attached :image
 
          with_options presence: true do
-          validates :item_images
+          validates :image
           validates :name, length: { maximum:40 }
           validates :description, length: { maximum:1000 }
           validates :category_id
