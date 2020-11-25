@@ -7,6 +7,10 @@ RSpec.describe Item, type: :model do
 
 describe '商品登録機能' do
 
+  it '全ての情報がが存在すれば登録できること' do
+    expect(@user).to be_valid
+  end
+
   it '画像が空では保存できないこと' do
       @item.image = nil # imageを存在しないことにする
       @item.valid?
@@ -37,31 +41,31 @@ describe '商品登録機能' do
     expect(@item.errors.full_messages).to include("Description can't be blank")
   end
 
-  it '商品のカテゴリーが空だと登録できない' do
+  it '商品のカテゴリーが１だと登録できない' do
     @item.category_id = '1' #category_idの値を1にする
     @item.valid?
     expect(@item.errors.full_messages).to include("Category must be other than 1")
   end
 
-  it '商品の状態が空だと登録できない' do
+  it '商品の状態が１だと登録できない' do
     @item.condition_id = '1' #condition_idの値を1にする
     @item.valid?
     expect(@item.errors.full_messages).to include("Condition must be other than 1")
   end
 
-  it '配送料の負担が空だと登録できない' do
+  it '配送料の負担が１だと登録できない' do
     @item.delivery_charge_id = '1' #delivery_chargeの値を1にする
     @item.valid?
     expect(@item.errors.full_messages).to include("Delivery charge must be other than 1")
   end
 
-  it '発送元の地域が空だと登録できない' do
+  it '発送元の地域が１だと登録できない' do
     @item.delivery_area_id = '1' #delivery_areaの値を1にする
     @item.valid?
     expect(@item.errors.full_messages).to include("Delivery area must be other than 1")
   end
 
-  it '発送までの日数が空だと登録できない' do
+  it '発送までの日数が１だと登録できない' do
     @item.delivery_days_id = '1' #delivery_daysの値を1にする
     @item.valid?
     expect(@item.errors.full_messages).to include("Delivery days must be other than 1")

@@ -1,26 +1,26 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:edit, :update]
+  before_action :move_to_index, except: [:index]
+  # before_action :set_item, only: [:edit, :update]
 
-  def index
-    @items = Item.all
-    @items = Item.order("created_at DESC")
-  end
+  # def index
+  #   @items = Item.all
+  #   @items = Item.order("created_at DESC")
+  # end
 
   def new
     @item = Item.new
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if current_item.update(item_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if current_item.update(item_params)
+  #     redirect_to root_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def create
     @item = Item.new(item_params)
