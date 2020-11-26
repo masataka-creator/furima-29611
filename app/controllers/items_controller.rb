@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    redirect_to action: :index unless user_signed_in?
   end
 
   def create
