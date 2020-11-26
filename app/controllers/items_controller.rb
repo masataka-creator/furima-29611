@@ -1,26 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
-  # before_action :set_item, only: [:edit, :update]
-
-  # def index
-  #   @items = Item.all
-  #   @items = Item.order("created_at DESC")
-  # end
+    before_action :authenticate_user!, only: [:new]
 
   def new
     @item = Item.new
+    redirect_to action: :index unless user_signed_in?
   end
-
-  # def edit
-  # end
-
-  # def update
-  #   if current_item.update(item_params)
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
 
   def create
     @item = Item.new(item_params)
@@ -32,10 +16,6 @@ class ItemsController < ApplicationController
   end
 
   private
-
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
-  end
 
   def item_params
     params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :delivery_charge_id, :delivery_area_id, :delivery_days_id, :price, :user_id).merge(user_id: current_user.id)

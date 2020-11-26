@@ -17,7 +17,7 @@ class Item < ApplicationRecord
           validates :delivery_charge_id
           validates :delivery_area_id
           validates :delivery_days_id
-          validates :price, format: { with:/\A[0-9]+\z/ }, numericality: { greater_than: 300, less_than: 10000000 }
+          validates :price, format: { with:/\A[0-9]+\z/ }, numericality: { greater_than: 299, less_than: 10000000 }
           
         end
       
