@@ -13,5 +13,4 @@ class Category < ActiveHash::Base
     { id: 10, name: 'ハンドメイド' },
     { id: 11, name: 'その他' }
   ]
-
 end
