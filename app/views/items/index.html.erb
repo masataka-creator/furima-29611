@@ -153,8 +153,8 @@
               <%= item.price %>
               円
               <br>
-              <%# "販売価格" %>
-              <%= "(税込み)" %>
+              <%# "送料負担有無" %>
+              <%= item.delivery_charge.name %>
             </span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
