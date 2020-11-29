@@ -5,7 +5,6 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
-
   describe 'ユーザー新規登録' do
     it 'ニックネームが空だと登録できない' do
       @user.nickname = '' # nicknameの値を空にする
@@ -24,13 +23,13 @@ RSpec.describe User, type: :model do
       another_user = FactoryBot.build(:user)
       another_user.email = @user.email
       another_user.valid?
-      expect(another_user.errors.full_messages).to include("Email has already been taken")
+      expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
 
     it 'メールアドレスは、@を含む必要があること' do
       @user.email = 'aaaaaa' # emailの値を@を含まない値にする
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email is invalid")
+      expect(@user.errors.full_messages).to include('Email is invalid')
     end
 
     it 'パスワードが空だと登録できない' do
@@ -48,7 +47,7 @@ RSpec.describe User, type: :model do
     it 'パスワードは、半角英数字混合での入力が必須であること' do
       @user.password = 'aaaaaa' # passwordの値を半角英字で統一してみる
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
+      expect(@user.errors.full_messages).to include('Password is invalid')
     end
 
     it 'パスワードが数字のみだと登録できない' do
@@ -60,7 +59,7 @@ RSpec.describe User, type: :model do
     it 'パスワードが全角では登録できない' do
       @user.password = 'ああああああ' # passwordの値を全角平仮名で統一してみる
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
+      expect(@user.errors.full_messages).to include('Password is invalid')
     end
 
     it '性が空だと登録できない' do
