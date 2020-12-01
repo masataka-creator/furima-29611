@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to       :delivery_charge
   belongs_to       :delivery_area
   belongs_to       :delivery_day
-  belongs_to :user
+  belongs_to       :user
   has_one_attached :image
 
   with_options presence: true do
@@ -16,7 +16,7 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :delivery_charge_id
     validates :delivery_area_id
-    validates :delivery_days_id
+    validates :delivery_day_id
     validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than: 299, less_than: 10_000_000 }
   end
 
@@ -25,6 +25,6 @@ class Item < ApplicationRecord
     validates :condition_id
     validates :delivery_charge_id
     validates :delivery_area_id
-    validates :delivery_days_id
+    validates :delivery_day_id
   end
 end
