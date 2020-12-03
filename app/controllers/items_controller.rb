@@ -35,15 +35,14 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-   if current_user.id == @item.user_id
     if @item.destroy # (出品者が)削除が成功したらトップに戻る
       redirect_to root_path
     else             # (出品者が)削除が失敗したらトップに戻る
-      redirect_to root_path
-    end              # (出品でない者が)アクションを起こしたらトップに戻る
-      redirect_to root_path
-   end
-  end
+      redirect_to root_path             # (if @item.destroyの分岐のend)
+    end               # (ログイン分岐のend)
+      redirect_to root_path unless current_user.id == @item.user_id
+  end                # (出品でない者が)アクションを起こしたらトップに戻る
+                     # (出品者判別の分岐の下に記述することで、出品者ではない場合の処理になる)
 
   private
 
