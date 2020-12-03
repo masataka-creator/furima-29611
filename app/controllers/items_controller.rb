@@ -35,12 +35,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @item.user_id
-    if @item.destroy # 条件式が真(true)のときに実行する処理
+   if current_user.id == @item.user_id
+    if @item.destroy # (出品者が)削除が成功したらトップに戻る
       redirect_to root_path
-    else             # 条件式が偽(false)のときに実行する処理
+    else             # (出品者が)削除が失敗したらトップに戻る
       redirect_to root_path
-    end
+    end              # (出品でない者が)アクションを起こしたらトップに戻る
+      redirect_to root_path
    end
   end
 
