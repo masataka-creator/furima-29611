@@ -35,8 +35,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    if current_user.id == @item.user_id
+    if @item.destroy # 条件式が真(true)のときに実行する処理
+      redirect_to root_path
+    else             # 条件式が偽(false)のときに実行する処理
+      redirect_to root_path
+    end
+   end
   end
 
   private
