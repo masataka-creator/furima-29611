@@ -108,7 +108,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送までの日数が１だと登録できない' do
-        @item.delivery_days_id = '1' # delivery_daysの値を1にする
+        @item.delivery_day_id = '1' # delivery_dayの値を1にする
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery days must be other than 1')
       end

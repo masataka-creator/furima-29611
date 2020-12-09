@@ -53,4 +53,8 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  # def sold_out_item
+  #   redirect_to root_path if @item.present?
+  # end
 end

@@ -17,6 +17,7 @@
 
 - has_many :items
 - has_many :purchase_histories
+- has_many :addresses
 
 
 ## items テーブル
@@ -29,7 +30,7 @@
 | condition_id       | integer    | null: false                  |
 | delivery_charge_id | integer    | null: false                  |
 | delivery_area_id   | integer    | null: false                  |
-| delivery_days_id   | integer    | null: false                  |
+| delivery_day_id    | integer    | null: false                  |
 | price              | integer    | null: false                  |
 | user               | references | foreign_key:true             |
 
@@ -49,7 +50,7 @@
 | Column     | Type       | Options           |
 | ---------- | ---------- | ----------------- |
 | user       | references | foreign_key: true |
-| item       | references | foreign_key:true  |
+| item       | references | foreign_key: true |
 
 
 ### Association
@@ -74,3 +75,4 @@
 
 - belongs_to_active_hash:prefecture
 - belongs_to :purchase_history
+- belongs_to :user
