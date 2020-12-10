@@ -1,9 +1,9 @@
 class UserOrder
   include ActiveModel::Model
-  attr_accessor :phone_num, :prefecture_id, :city, :home_number, :building_name, :telephone, :user_id, :item_id, :price, :token
+  attr_accessor :phone_num, :prefecture_id, :city, :home_number, :building_name, :telephone, :user_id, :item_id, :token, :price
 
   with_options presence: true do
-    validates :phone_num, format: {with: /\A\d{3}[-]\d{4}\z/}
+    validates :phone_num, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :home_number

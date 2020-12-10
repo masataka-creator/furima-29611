@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchase_histories
+- has_many :user_orders
 - has_many :addresses
 
 
@@ -40,12 +40,12 @@
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :delivery_charge
 - belongs_to_active_hash :delivery_area
-- belongs_to_active_hash :delivery_days
+- belongs_to_active_hash :delivery_day
 - belongs_to :user
-- has_one :purchase_history
+- has_one :user_order
 
 
-## purchase_histories テーブル
+## user_orders テーブル
 
 | Column     | Type       | Options           |
 | ---------- | ---------- | ----------------- |
@@ -69,10 +69,10 @@
 | home_number      | string     | null: false         |
 | building_name    | string     |                     |
 | telephone        | string     | null: false         |
-| purchase_history | references | foreign_key:true    |
+| user_order       | references | foreign_key:true    |
 
 ### Association
 
 - belongs_to_active_hash:prefecture
-- belongs_to :purchase_history
+- belongs_to :user_order
 - belongs_to :user

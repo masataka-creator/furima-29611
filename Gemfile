@@ -33,7 +33,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do
@@ -66,3 +65,7 @@ gem 'pry-rails'
 gem 'mini_magick'
 gem 'active_hash'
 gem 'payjp'
+gem 'mime-types' #ここより下のgemについては記入がないとエラーになります
+gem 'loofah' , "2.7.0"
+gem 'mime-types-data' , "3.2020.0512"
+gem 'zeitwerk' , "2.4.0"
