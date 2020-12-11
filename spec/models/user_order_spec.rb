@@ -24,25 +24,25 @@ RSpec.describe UserOrder, type: :model do
         expect(@user_order.errors.full_messages).to include
       end
 
-      it 'phone_numが空である場合は購入出来ない' do
+      it '郵便番号が空である場合は購入出来ない' do
         @user_order.phone_num = '' # phone_numの値を''にする
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Phone num is invalid')
       end
 
-      it 'phone_numにハイフンが含まれていない場合は購入出来ない' do
-        @user_order.phone_num = 1_234_567 # phone_numの値をハイフンの含まない半角数字にする
+      it '郵便番号にハイフンが含まれていない場合は購入出来ない' do
+        @user_order.phone_num = 1234567 # phone_numの値をハイフンの含まない半角数字にする
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Phone num is invalid')
       end
 
-      it 'phone_numが全角数字である場合は購入出来ない' do
+      it '郵便番号が全角数字である場合は購入出来ない' do
         @user_order.phone_num = '１２３４５６７' # phone_numの値を全角数字にする
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Phone num is invalid')
       end
 
-      it 'phone_numが3桁-4桁でない場合は購入出来ない' do
+      it '郵便番号が3桁-4桁でない場合は購入出来ない' do
         @user_order.phone_num = '1234-567' # phone_numの値を4桁-3桁にする
         @user_order.valid?
         expect(@user_order.errors.full_messages).to include('Phone num is invalid')
