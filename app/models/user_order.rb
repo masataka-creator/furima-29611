@@ -14,8 +14,8 @@ class UserOrder
   end
 
   def save
+    order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(phone_num: phone_num, prefecture_id: prefecture_id, city: city, home_number: home_number,
                    building_name: building_name, telephone: telephone, order_id: order.id)
-    order = Order.create(user_id: user_id, item_id: item_id)
   end
 end
