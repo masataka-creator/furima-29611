@@ -26,14 +26,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '1.4.8', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do
@@ -65,3 +64,8 @@ gem 'devise'
 gem 'pry-rails'
 gem 'mini_magick'
 gem 'active_hash'
+gem 'payjp'
+gem 'mime-types' #ここより下のgemについては記入がないとエラーになります
+gem 'loofah' , "2.7.0"
+gem 'mime-types-data' , "3.2020.0512"
+gem 'zeitwerk' , "2.4.0"
