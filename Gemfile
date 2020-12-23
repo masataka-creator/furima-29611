@@ -69,3 +69,4 @@ gem 'mime-types' #ここより下のgemについては記入がないとエラ�
 gem 'loofah' , "2.7.0"
 gem 'mime-types-data' , "3.2020.0512"
 gem 'zeitwerk' , "2.4.0"
+gem "aws-sdk-s3", require: false
